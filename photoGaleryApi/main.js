@@ -18,11 +18,12 @@ const NavBar = `
 //footer
 
 const footer = `
-<p>By Ricardo Carrascosa -- using Unleash</p>
+<p>By Ricardo Carrascosa -- using Unleash API</p>
 `
 
 document.querySelector('#app').innerHTML = Layout
 document.querySelector('header').innerHTML = NavBar
+document.querySelector('footer').innerHTML = footer
 
 // Speack with the API UNPLASH
 import { createApi } from 'unsplash-js'
