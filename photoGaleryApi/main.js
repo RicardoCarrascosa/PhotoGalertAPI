@@ -15,6 +15,11 @@ const NavBar = `
   <button id="button"> <img src="icons8-búsqueda-30.png" alt="icons8-búsqueda-30" class = "iconoNav"> </img> </button> 
   <a href ="#" > <img src="icons8-recordatorios-de-citas-64.png" alt="Notification" class = "iconoNav"> </img> </a>
 </nav>`
+//footer
+
+const footer = `
+<p>By Ricardo Carrascosa -- using Unleash</p>
+`
 
 document.querySelector('#app').innerHTML = Layout
 document.querySelector('header').innerHTML = NavBar

@@ -1,1 +1,0 @@
-import './photoContainer.css'
