@@ -73,19 +73,23 @@ const printGalery = (photos) => {
   const gallery = document.querySelector('.gallery')
   gallery.innerHTML = ''
   let count = 1
-
-  for (const element of photos) {
-    let clase = ''
-    if (count % 6 == 0) {
-      // clase = 'gallery2cols'
-      clase = 'gallery2rowscols'
-    } else if (count % 4 == 0) {
-      clase = 'gallery2cols'
-    } else if (count % 2 == 0) {
-      clase = 'gallery2rows'
+  if (photos.length == 0) {
+    const ErrorMSG = `<h2 class= 'errorMSG'> The input was not found, search again!</h2>`
+    gallery.innerHTML = ErrorMSG
+  } else {
+    for (const element of photos) {
+      let clase = ''
+      if (count % 6 == 0) {
+        // clase = 'gallery2cols'
+        clase = 'gallery2rowscols'
+      } else if (count % 4 == 0) {
+        clase = 'gallery2cols'
+      } else if (count % 2 == 0) {
+        clase = 'gallery2rows'
+      }
+      gallery.innerHTML += photoCardTeplate(element, clase)
+      count += 1
     }
-    gallery.innerHTML += photoCardTeplate(element, clase)
-    count += 1
   }
 }
 
@@ -94,12 +98,20 @@ const buttonListener = async () => {
   const searchBar = document.getElementById('searchBar')
   const button = document.getElementById('button')
   button.addEventListener('click', async () => {
-    const photos = await searchPhotos(searchBar.value)
+    let searchVal = 'dogs'
+    if (searchBar.value != '') {
+      searchVal = searchBar.value
+    }
+    const photos = await searchPhotos(searchVal)
     printGalery(photos.response.results)
   })
   searchBar.addEventListener('keypress', async function (e) {
     if (e.key === 'Enter') {
-      const photos = await searchPhotos(searchBar.value)
+      let searchVal = 'dogs'
+      if (searchBar.value != '') {
+        searchVal = searchBar.value
+      }
+      const photos = await searchPhotos(searchVal)
       printGalery(photos.response.results)
     }
   })
